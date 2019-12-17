@@ -1,0 +1,29 @@
+{
+  "name": "@rxdi/graphql-webcomponent",
+  "version": "0.0.1",
+  "description": "Reactive Graphql web-component",
+  "scripts": {
+    "start": "npx parcel ./example/index.html --out-dir client",
+    "build": "npx parcel build ./src/index.ts --experimental-scope-hoisting --out-dir dist",
+    "patch": "npm version patch && npm run publish",
+    "minor": "npm version minor && npm run publish",
+    "major": "npm version major && npm run publish",
+    "publish": "npm publish --update-readme --access public"
+  },
+  "author": "Kristiyan Tachev (@Stradivario)",
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@rhtml/operators": "^0.0.6",
+    "@rhtml/hooks": "^0.0.6",
+    "@rhtml/graphql": "^0.0.6",
+    "@rhtml/components": "^0.0.6"
+  },
+  "typings":"./out/index.d.ts",
+  "module": "./out/index.js",
+  "devDependencies": {
+    "typescript": "^3.7.3"
+  }
+}
