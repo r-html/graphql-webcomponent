@@ -3,9 +3,6 @@ import {
   LitElement,
   html,
   property,
-  query,
-  queryAll,
-  css,
   TemplateResult
 } from '@rxdi/lit-html';
 import { from, Subject } from 'rxjs';
@@ -88,13 +85,13 @@ window['Component'] = function(options) {
     return cls;
   };
 };
-window['query'] = query;
-window['queryAll'] = queryAll;
-window['LitElement'] = LitElement;
-window['css'] = css;
 
 import * as lit from '@rxdi/lit-html';
 import * as core from '@rxdi/core';
+import * as operators from 'rxjs/operators';
+import * as rxjs from 'rxjs';
 
-window['@rxdi/lit-html'] = lit;
-window['@rxdi/core'] = core
+Object.assign(window, core);
+Object.assign(window, lit);
+Object.assign(window, rxjs);
+Object.assign(window, operators);
