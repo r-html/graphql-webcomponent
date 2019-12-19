@@ -21,6 +21,7 @@ import {
 import {
   tap,
   map,
+  startWith,
   switchMap,
   concatAll,
   concatMap,
@@ -67,6 +68,7 @@ window["tap"] = tap;
 window["map"] = map;
 window["switchMap"] = switchMap;
 window["concatAll"] = concatAll;
+window["startWith"] = startWith;
 window["concatMap"] = concatMap;
 window["concat"] = concat;
 window["switchMapTo"] = switchMapTo;

@@ -9,7 +9,7 @@ window["async"] = lit_html_1.async;
 window["render"] = lit_html_1.render;
 window["Component"] = function (options) {
     return function (cls) {
-        Object.defineProperty(cls, "params", {
+        Object.defineProperty(cls.prototype, "params", {
             get: function myProperty() {
                 return router_slot_1.queryParentRouterSlot(this).match.params;
             }
@@ -35,6 +35,7 @@ window["tap"] = operators_1.tap;
 window["map"] = operators_1.map;
 window["switchMap"] = operators_1.switchMap;
 window["concatAll"] = operators_1.concatAll;
+window["startWith"] = operators_1.startWith;
 window["concatMap"] = operators_1.concatMap;
 window["concat"] = operators_1.concat;
 window["switchMapTo"] = operators_1.switchMapTo;

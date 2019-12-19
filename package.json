@@ -4,7 +4,7 @@
   "description": "Reactive Graphql web-component",
   "scripts": {
     "start": "npx parcel ./example/index.html --out-dir client",
-    "build": "npx parcel build ./src/index.ts --experimental-scope-hoisting --out-dir dist --out-file 'index_0.0.12.js'",
+    "build": "npx parcel build ./src/index.ts --experimental-scope-hoisting --out-dir dist --out-file 'index_0.0.13.js'",
     "patch": "npm version patch && npm run pub",
     "minor": "npm version minor && npm run pub",
     "major": "npm version major && npm run pub",
