@@ -5,6 +5,7 @@ import {
   query,
   queryAll,
   css,
+  async,
   render
 } from "@rxdi/lit-html";
 import {
@@ -34,6 +35,7 @@ import {
 } from "rxjs/operators";
 
 window["html"] = html;
+window["async"] = async;
 window["render"] = render;
 window["Component"] = function(options) {
   return function(cls) {
