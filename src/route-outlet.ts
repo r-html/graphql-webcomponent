@@ -1,9 +1,9 @@
-import { property, html, Component, LitElement } from "@rxdi/lit-html";
-import { IRoute, RouterSlot } from "router-slot";
-import "router-slot";
+import { property, html, Component, LitElement, query } from '@rxdi/lit-html';
+import { IRoute, RouterSlot } from 'router-slot';
+import 'router-slot';
 
 @Component({
-  selector: "router-outlet",
+  selector: 'router-outlet',
   template(this: RouterOutlet) {
     return html`
       <router-slot></router-slot>
@@ -14,10 +14,10 @@ export class RouterOutlet extends LitElement {
   @property()
   public routes: IRoute[] = [];
 
+  @query('router-slot')
+  private routerSlot: RouterSlot;
+
   OnUpdateFirst() {
-    const routerSlot = this.shadowRoot.querySelector(
-      "router-slot"
-    ) as RouterSlot;
-    routerSlot.add(this.routes);
+    this.routerSlot.add(this.routes);
   }
 }
