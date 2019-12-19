@@ -4,7 +4,7 @@
   "description": "Reactive Graphql web-component",
   "scripts": {
     "start": "npx parcel ./example/index.html --out-dir client",
-    "build": "npx parcel build ./src/index.ts --experimental-scope-hoisting --out-dir dist --out-file 'index_0.0.3.js'",
+    "build": "npx parcel build ./src/index.ts --experimental-scope-hoisting --out-dir dist --out-file 'index_0.0.4.js'",
     "patch": "npm version patch && npm run pub",
     "minor": "npm version minor && npm run pub",
     "major": "npm version major && npm run pub",
@@ -16,10 +16,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@rhtml/operators": "^0.0.6",
-    "@rhtml/hooks": "^0.0.6",
+    "@rhtml/components": "^0.0.6",
     "@rhtml/graphql": "^0.0.6",
-    "@rhtml/components": "^0.0.6"
+    "@rhtml/hooks": "^0.0.6",
+    "@rhtml/operators": "^0.0.6",
+    "router-slot": "^1.4.9"
   },
   "typings": "./out/index.d.ts",
   "module": "./out/index.js",

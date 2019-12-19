@@ -79,6 +79,8 @@ export class GraphQLComponent extends LitElement {
   }
 }
 
+export * from './route-outlet';
+
 window['html'] = html;
 window['Component'] = function(options) {
   return function(cls) {
