@@ -33,17 +33,22 @@ import {
   zip,
   zipAll
 } from "rxjs/operators";
+import { queryParentRouterSlot } from 'router-slot';
 
 window["html"] = html;
 window["async"] = async;
 window["render"] = render;
 window["Component"] = function(options) {
   return function(cls) {
+    cls.prototype['params'] = function() {
+        return queryParentRouterSlot(this)!.match!.params;
+    }
     Component(options)(cls);
     return cls;
   };
 };
 window["query"] = query;
+window["queryParentRouterSlot"] = queryParentRouterSlot;
 window["queryAll"] = queryAll;
 window["LitElement"] = LitElement;
 window["css"] = css;
