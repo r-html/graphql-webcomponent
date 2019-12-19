@@ -1,6 +1,7 @@
+
 <script
   type="text/javascript"
-  src="https://raw.githack.com/rxdi/graphql-webcomponent/master/dist/index.js"
+  src="../src/ui-kit/index.ts"
 ></script>
 <!-- <script type="text/javascript" src="./index.js"></script> -->
 
@@ -57,7 +58,7 @@
   const usersList = type => fn => state =>
     ListMonad(state =>
       userListType(type)(html`
-        <r-for .of=${state}>
+        <r-for .of=${state.length ? state : []}>
           <r-let .item=${fn}></r-let>
         </r-for>
       `)
@@ -71,6 +72,7 @@
     template() {
       return html`
         <r-part>
+          <r-fetch></r-fetch>
           <r-state .value=${this.state}></r-state>
           <r-render .state=${this.templates.get(this.type) || (() => html``)}>
           </r-render>
