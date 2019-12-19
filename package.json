@@ -1,6 +1,6 @@
 {
   "name": "@rxdi/graphql-webcomponent",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Reactive Graphql web-component",
   "scripts": {
     "start": "npx parcel ./example/index.html --out-dir client",
@@ -17,10 +17,10 @@
   "license": "MIT",
   "dependencies": {
     "@rxdi/core": "^0.7.40",
-    "@rhtml/components": "^0.0.6",
-    "@rhtml/graphql": "^0.0.6",
-    "@rhtml/hooks": "^0.0.6",
-    "@rhtml/operators": "^0.0.6",
+    "@rhtml/components": "^0.0.9",
+    "@rhtml/graphql": "^0.0.9",
+    "@rhtml/hooks": "^0.0.9",
+    "@rhtml/operators": "^0.0.9",
     "router-slot": "^1.4.9"
   },
   "typings": "./out/index.d.ts",
