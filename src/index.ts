@@ -4,27 +4,28 @@ import {
   html,
   property,
   TemplateResult
-} from '@rxdi/lit-html';
-import { from, Subject } from 'rxjs';
-import { tap, map, switchMap } from 'rxjs/operators';
+} from "@rxdi/lit-html";
+import { from, Subject } from "rxjs";
 
-import '@rhtml/hooks';
-import '@rhtml/components';
-import '@rhtml/operators';
+import { tap, map, switchMap } from "rxjs/operators";
+
+import "@rhtml/hooks";
+import "@rhtml/components";
+import "@rhtml/operators";
 
 type OnRequestType = () => Promise<Headers>;
 type OnErrorType = (e) => TemplateResult;
 type OnLoadingType = () => TemplateResult;
 
 @Component({
-  selector: 'setup-graphql',
+  selector: "setup-graphql",
   template(this: GraphQLComponent) {
     return html`
       <r-part>
         <r-state
           .value=${this.init.pipe(
             switchMap(() =>
-              from(import('@rhtml/graphql/settings')).pipe(
+              from(import("@rhtml/graphql/settings")).pipe(
                 map(m =>
                   m.setConfig({
                     config: {
@@ -38,7 +39,7 @@ type OnLoadingType = () => TemplateResult;
                     }
                   })
                 ),
-                switchMap(() => import('@rhtml/graphql/index')),
+                switchMap(() => import("@rhtml/graphql/index")),
                 tap(() => this.remove())
               )
             )
@@ -52,10 +53,10 @@ type OnLoadingType = () => TemplateResult;
 })
 export class GraphQLComponent extends LitElement {
   @property()
-  uri: string = 'https://countries.trevorblades.com/';
+  uri: string = "https://countries.trevorblades.com/";
 
   @property()
-  pubsub: string = 'wss://pubsub.youvolio.com/subscriptions';
+  pubsub: string = "wss://pubsub.youvolio.com/subscriptions";
 
   @property()
   onRequest: OnRequestType = async () => new Headers();
@@ -72,26 +73,9 @@ export class GraphQLComponent extends LitElement {
   init: Subject<any> = new Subject();
 
   ready() {
-    this.init.next()
+    this.init.next();
   }
 }
 
-export * from './route-outlet';
-
-window['html'] = html;
-window['Component'] = function(options) {
-  return function(cls) {
-    Component(options)(cls);
-    return cls;
-  };
-};
-
-import * as lit from '@rxdi/lit-html';
-import * as core from '@rxdi/core';
-import * as operators from 'rxjs/operators';
-import * as rxjs from 'rxjs';
-
-Object.assign(window, core);
-Object.assign(window, lit);
-Object.assign(window, rxjs);
-Object.assign(window, operators);
+export * from "./route-outlet";
+export * from './window';
