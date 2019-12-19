@@ -16,6 +16,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -93,17 +96,5 @@ GraphQLComponent = __decorate([
     })
 ], GraphQLComponent);
 exports.GraphQLComponent = GraphQLComponent;
-window['html'] = lit_html_1.html;
-window['Component'] = function (options) {
-    return function (cls) {
-        lit_html_1.Component(options)(cls);
-        return cls;
-    };
-};
-window['property'] = lit_html_1.property;
-window['query'] = lit_html_1.query;
-window['queryAll'] = lit_html_1.queryAll;
-window['LitElement'] = lit_html_1.LitElement;
-window['css'] = lit_html_1.css;
-exports.default = {};
+__export(require("./route-outlet"));
 //# sourceMappingURL=index.js.map

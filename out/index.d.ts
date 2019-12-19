@@ -15,5 +15,5 @@ export declare class GraphQLComponent extends LitElement {
     init: Subject<any>;
     ready(): void;
 }
-declare const _default: {};
-export default _default;
+export * from "./route-outlet";
+export * from './window';
