@@ -1,5 +1,6 @@
 import { property, html, Component, LitElement, query } from '@rxdi/lit-html';
 import { IRoute, RouterSlot } from 'router-slot';
+
 import 'router-slot';
 
 @Component({
@@ -11,7 +12,7 @@ import 'router-slot';
   }
 })
 export class RouterOutlet extends LitElement {
-  @property()
+  @property({ type: Array })
   public routes: IRoute[] = [];
 
   @query('router-slot')

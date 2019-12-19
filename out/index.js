@@ -96,5 +96,5 @@ GraphQLComponent = __decorate([
     })
 ], GraphQLComponent);
 exports.GraphQLComponent = GraphQLComponent;
-__export(require("./route-outlet"));
+__export(require("./router-outlet"));
 //# sourceMappingURL=index.js.map

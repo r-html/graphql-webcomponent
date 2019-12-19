@@ -1,5 +1,6 @@
 import { LitElement, TemplateResult } from "@rxdi/lit-html";
 import { Subject } from "rxjs";
+import { RouterOutlet } from './router-outlet';
 import "@rhtml/hooks";
 import "@rhtml/components";
 import "@rhtml/operators";
@@ -15,5 +16,10 @@ export declare class GraphQLComponent extends LitElement {
     init: Subject<any>;
     ready(): void;
 }
-export * from "./route-outlet";
+export * from "./router-outlet";
 export * from './window';
+declare global {
+    interface HTMLElementTagNameMap {
+        'router-outlet': RouterOutlet;
+    }
+}

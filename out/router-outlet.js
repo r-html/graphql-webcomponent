@@ -40,4 +40,4 @@ RouterOutlet = __decorate([
     })
 ], RouterOutlet);
 exports.RouterOutlet = RouterOutlet;
-//# sourceMappingURL=route-outlet.js.map
+//# sourceMappingURL=router-outlet.js.map
