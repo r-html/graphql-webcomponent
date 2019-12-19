@@ -86,8 +86,13 @@ window['Component'] = function(options) {
     return cls;
   };
 };
-window['property'] = property;
 window['query'] = query;
 window['queryAll'] = queryAll;
 window['LitElement'] = LitElement;
 window['css'] = css;
+
+import * as lit from '@rxdi/lit-html';
+import * as core from '@rxdi/core';
+
+window['@rxdi/lit-html'] = lit;
+window['@rxdi/core'] = core

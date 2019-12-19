@@ -1,14 +1,14 @@
 {
   "name": "@rxdi/graphql-webcomponent",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Reactive Graphql web-component",
   "scripts": {
     "start": "npx parcel ./example/index.html --out-dir client",
-    "build": "npx parcel build ./src/index.ts --experimental-scope-hoisting --out-dir dist",
-    "patch": "npm version patch && npm run publish",
-    "minor": "npm version minor && npm run publish",
-    "major": "npm version major && npm run publish",
-    "publish": "npm publish --update-readme --access public"
+    "build": "npx parcel build ./src/index.ts --experimental-scope-hoisting --out-dir dist --out-file 'index_0.0.3.js'",
+    "patch": "npm version patch && npm run pub",
+    "minor": "npm version minor && npm run pub",
+    "major": "npm version major && npm run pub",
+    "pub": "npm publish --update-readme --access public"
   },
   "author": "Kristiyan Tachev (@Stradivario)",
   "browserslist": [
@@ -21,7 +21,7 @@
     "@rhtml/graphql": "^0.0.6",
     "@rhtml/components": "^0.0.6"
   },
-  "typings":"./out/index.d.ts",
+  "typings": "./out/index.d.ts",
   "module": "./out/index.js",
   "devDependencies": {
     "typescript": "^3.7.3"
