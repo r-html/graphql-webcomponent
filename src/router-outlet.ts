@@ -18,7 +18,7 @@ export class RouterOutlet extends LitElement {
   @query('router-slot')
   private routerSlot: RouterSlot;
 
-  OnUpdateFirst() {
+  OnUpdate() {
     this.routerSlot.add(this.routes);
   }
 }
