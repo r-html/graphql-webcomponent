@@ -17,12 +17,12 @@ let RouterOutlet = class RouterOutlet extends lit_html_1.LitElement {
         super(...arguments);
         this.routes = [];
     }
-    OnUpdateFirst() {
+    OnUpdate() {
         this.routerSlot.add(this.routes);
     }
 };
 __decorate([
-    lit_html_1.property(),
+    lit_html_1.property({ type: Array }),
     __metadata("design:type", Array)
 ], RouterOutlet.prototype, "routes", void 0);
 __decorate([

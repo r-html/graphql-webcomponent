@@ -4,5 +4,5 @@ import 'router-slot';
 export declare class RouterOutlet extends LitElement {
     routes: IRoute[];
     private routerSlot;
-    OnUpdateFirst(): void;
+    OnUpdate(): void;
 }
