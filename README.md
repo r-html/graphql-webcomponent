@@ -158,62 +158,43 @@ export class ListMonadComponent extends LitElement {
 ```html
 <script
   type="text/javascript"
-  src="https://raw.githack.com/rxdi/graphql-webcomponent/master/dist/index.js"
+  src="https://cdn.jsdelivr.net/gh/r-html/graphql-webcomponent/dist/ui-kit/0.0.15.js"
 ></script>
-<!-- <script type="text/javascript" src="./index.js"></script> -->
-
-<setup-graphql
-  uri="https://countries.trevorblades.com/"
-  pubsub="wss://pubsub.youvolio.com/subscriptions"
-></setup-graphql>
 
 <script>
-  const el = document.querySelector("setup-graphql");
-  el.onRequest = async function() {
-    return new Headers();
-  };
-  el.loading = () => {
-    return "Loading...";
-  };
-  el.error = e => {
-    return e;
-  };
-  el.ready();
-</script>
+  const ListMonad = (fn) => (value) =>
+    html`
+      <r-part>
+        <r-state .value=${value}></r-state>
+        <r-render .state=${fn}> </r-render>
+      </r-part>
+    `;
 
-<script>
-  const ListMonad = fn => value => html`
-    <r-part>
-      <r-state .value=${value}></r-state>
-      <r-render .state=${fn}> </r-render>
-    </r-part>
-  `;
-
-  const ListTypes = { OL: "ol", UL: "ul" };
+  const ListTypes = { OL: 'ol', UL: 'ul' };
 
   const listMapTypes = new Map([
     [
       ListTypes.OL,
-      value => html`
+      (value) => html`
         <ol>
           ${value}
         </ol>
-      `
+      `,
     ],
     [
       ListTypes.UL,
-      value => html`
+      (value) => html`
         <ul>
           ${value}
         </ul>
-      `
-    ]
+      `,
+    ],
   ]);
 
-  const userListType = type => value => listMapTypes.get(type)(value);
+  const userListType = (type) => (value) => listMapTypes.get(type)(value);
 
-  const usersList = type => fn => state =>
-    ListMonad(state =>
+  const usersList = (type) => (fn) => (state) =>
+    ListMonad((state) =>
       userListType(type)(html`
         <r-for .of=${state}>
           <r-let .item=${fn}></r-let>
@@ -225,7 +206,7 @@ export class ListMonadComponent extends LitElement {
   const userULList = usersList(ListTypes.UL);
 
   Component({
-    selector: "list-monad-component",
+    selector: 'list-monad-component',
     template() {
       return html`
         <r-part>
@@ -234,7 +215,7 @@ export class ListMonadComponent extends LitElement {
           </r-render>
         </r-part>
       `;
-    }
+    },
   })(
     class ListMonadComponent extends LitElement {
       static get properties() {
@@ -242,7 +223,7 @@ export class ListMonadComponent extends LitElement {
           templates: { type: Object },
           type: { type: Object },
           state: { type: Object },
-          select: { type: Object }
+          select: { type: Object },
         };
       }
       constructor() {
@@ -250,22 +231,12 @@ export class ListMonadComponent extends LitElement {
         this.listMapTemplates = new Map([
           [
             ListTypes.OL,
-            userOLList(
-              value =>
-                html`
-                  <li>${this.select(value)}</li>
-                `
-            )
+            userOLList((value) => html` <li>${this.select(value)}</li> `),
           ],
           [
             ListTypes.UL,
-            userULList(
-              value =>
-                html`
-                  <li>${this.select(value)}</li>
-                `
-            )
-          ]
+            userULList((value) => html` <li>${this.select(value)}</li> `),
+          ],
         ]);
         this.state = {};
         this.templates = this.listMapTemplates;
@@ -275,11 +246,11 @@ export class ListMonadComponent extends LitElement {
   );
 
   Component({
-    selector: "app-component",
+    selector: 'app-component',
     template() {
       return html`
         <r-part>
-          <r-settings .value=${{ fetchPolicy: "cache-first" }}></r-settings>
+          <r-settings .value=${{ fetchPolicy: 'cache-first' }}></r-settings>
           <r-fetch .query=${`{ continents { name } }`}></r-fetch>
           <r-render
             .state=${({ data: { continents } }) =>
@@ -287,7 +258,7 @@ export class ListMonadComponent extends LitElement {
                 <list-monad-component
                   .templates=${this.listMapTemplates}
                   .state=${continents}
-                  .select=${s => s.name}
+                  .select=${(s) => s.name}
                   .type=${this.type}
                 ></list-monad-component>
               `}
@@ -295,31 +266,21 @@ export class ListMonadComponent extends LitElement {
           </r-render>
         </r-part>
       `;
-    }
+    },
   })(
     class AppComponent extends LitElement {
       constructor() {
         super();
-        this.type = "ul";
+        this.type = 'ul';
         this.listMapTemplates = new Map([
           [
             ListTypes.OL,
-            userOLList(
-              ({ name }) =>
-                html`
-                  <li><b>${name}</b></li>
-                `
-            )
+            userOLList(({ name }) => html` <li><b>${name}</b></li> `),
           ],
           [
             ListTypes.UL,
-            userULList(
-              ({ name }) =>
-                html`
-                  <li><i>${name}</i></li>
-                `
-            )
-          ]
+            userULList(({ name }) => html` <li><i>${name}</i></li> `),
+          ],
         ]);
       }
     }
@@ -327,4 +288,24 @@ export class ListMonadComponent extends LitElement {
 </script>
 
 <app-component></app-component>
+
+<setup-graphql
+  uri="https://countries.trevorblades.com/"
+  pubsub="wss://pubsub.youvolio.com/subscriptions"
+></setup-graphql>
+
+<script>
+  const el = document.querySelector('setup-graphql');
+  el.onRequest = async function () {
+    return new Headers();
+  };
+  el.loading = () => {
+    return 'Loading...';
+  };
+  el.error = (e) => {
+    return e;
+  };
+  el.ready();
+</script>
+
 ```
