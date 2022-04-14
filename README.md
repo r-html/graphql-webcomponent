@@ -8,7 +8,32 @@ npm i @rxdi/graphql-webcomponent
 ## Usage via CDN
 
 ```html
-<script type="text/javascript" src="https://raw.githack.com/rxdi/graphql-webcomponent/master/dist/index.js"></script>
+<script
+  type="text/javascript"
+  src="https://raw.githack.com/rxdi/graphql-webcomponent/master/dist/ui-kit/0.0.15.js"
+></script>
+
+<script>
+  Component({
+    selector: 'app-component',
+    template: () => html`
+      <r-part>
+        <r-settings .value=${{ fetchPolicy: 'cache-first' }}></r-settings>
+        <r-fetch .query=${`{ continents { name } }`}></r-fetch>
+        <r-render
+          .state=${({ data: { continents } }) => html`
+            <r-for .of=${continents}>
+              <r-let .item=${({ name }) => name}></r-let>
+            </r-for>
+          `}
+        >
+        </r-render>
+      </r-part>
+    `,
+  })(class AppComponent extends LitElement {});
+</script>
+
+<app-component></app-component>
 
 <setup-graphql
   uri="https://countries.trevorblades.com/"
@@ -16,38 +41,19 @@ npm i @rxdi/graphql-webcomponent
 ></setup-graphql>
 
 <script>
-  const el = document.querySelector("setup-graphql");
-  el.onRequest = async function() {
+  const el = document.querySelector('setup-graphql');
+  el.onRequest = async function () {
     return new Headers();
   };
   el.loading = () => {
-    return "Loading...";
+    return 'Loading...';
   };
-  el.error = e => {
+  el.error = (e) => {
     return e;
   };
   el.ready();
 </script>
 
-<script>
-Component({
-  selector: "app-component",
-  template: () => html`
-    <r-part>
-      <r-settings .value=${{ fetchPolicy: 'cache-first' }}></r-settings>
-      <r-fetch .query=${`{ continents { name } }`}></r-fetch>
-      <r-render .state=${({ data: { continents } }) => html`
-        <r-for .of=${continents}>
-          <r-let .item=${({ name }) => name}></r-let>
-        </r-for>
-      `}>
-      </r-render>
-    </r-part>
-  `
-})(class AppComponent extends LitElement {});
-</script>
-
-<app-component></app-component>
 ```
 
 ### Usage via NPM with `Typescript`
