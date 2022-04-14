@@ -10,7 +10,7 @@ npm i @rxdi/graphql-webcomponent
 ```html
 <script
   type="text/javascript"
-  src="https://raw.githack.com/rxdi/graphql-webcomponent/master/dist/ui-kit/0.0.15.js"
+  src="https://cdn.jsdelivr.net/gh/r-html/graphql-webcomponent/dist/ui-kit/0.0.15.js"
 ></script>
 
 <script>
